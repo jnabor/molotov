@@ -4,7 +4,7 @@ export interface AppProviderProps {}
 
 export interface AppProviderState {}
 
-export const appContext = React.createContext<AppProviderState>({})
+export const AppContext = React.createContext<AppProviderState>({})
 
 export class AppProvider extends React.Component<
   AppProviderProps,
@@ -19,9 +19,9 @@ export class AppProvider extends React.Component<
 
   render() {
     return (
-      <appContext.Provider value={this.state}>
+      <AppContext.Provider value={this.state}>
         {this.props.children}
-      </appContext.Provider>
+      </AppContext.Provider>
     )
   }
 }

@@ -1,0 +1,9 @@
+{
+    "auth": {
+        "molotova09ff279": {
+            "service": "Cognito",
+            "providerPlugin": "awscloudformation",
+            "dependsOn": []
+        }
+    }
+}

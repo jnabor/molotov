@@ -3,6 +3,8 @@ import User from '../../components/user'
 
 export interface AuthProps {}
 
+// redirect to auth/signin
+
 const Auth: React.SFC<AuthProps> = () => {
   return (
     <div>

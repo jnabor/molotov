@@ -1,0 +1,19 @@
+{
+    "serverless": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-molotov-serverless-65340-authRole",
+            "UnauthRoleArn": "arn:aws:iam::815621908682:role/amplify-molotov-serverless-65340-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::815621908682:role/amplify-molotov-serverless-65340-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "amplify-molotov-serverless-65340-deployment",
+            "UnauthRoleName": "amplify-molotov-serverless-65340-unauthRole",
+            "StackName": "amplify-molotov-serverless-65340",
+            "StackId": "arn:aws:cloudformation:us-west-2:815621908682:stack/amplify-molotov-serverless-65340/f03d3710-08c3-11ea-88b5-0ad849805b7e"
+        },
+        "categories": {
+            "auth": {
+                "molotova09ff279": {}
+            }
+        }
+    }
+}
