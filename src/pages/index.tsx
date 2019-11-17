@@ -5,29 +5,31 @@ import Layout from '../app/AppLayout'
 
 import Container from '@material-ui/core/Container'
 import CssBaseline from '@material-ui/core/CssBaseline'
+import Button from '@material-ui/core/Button'
 
 export interface IndexPageProps {}
 
-export interface IndexPageState {}
-
-class IndexPage extends React.Component<IndexPageProps, IndexPageState> {
-  render() {
-    return (
-      <Layout title='Molotov Home'>
-        <Container maxWidth='xs'>
-          <CssBaseline />
-          <h1>The Main Page</h1>
-          <p>
-            Got to{' '}
-            <Link href='/auth'>
-              <a>Auth</a>
-            </Link>
-          </p>
-          <button onClick={() => Router.push('/auth')}>Go to auth</button>
-        </Container>
-      </Layout>
-    )
-  }
+const IndexPage: React.SFC<IndexPageProps> = () => {
+  return (
+    <Layout title='Molotov Home'>
+      <Container maxWidth='xs'>
+        <CssBaseline />
+        <h1> MOLOTOV COCKTAIL</h1>
+        <p>
+          Go to{' '}
+          <Link href='/auth'>
+            <a>Auth</a>
+          </Link>
+        </p>
+        <Button
+          onClick={() => Router.push('/auth')}
+          variant='outlined'
+          color='primary'>
+          SIGN IN
+        </Button>
+      </Container>
+    </Layout>
+  )
 }
 
 export default IndexPage

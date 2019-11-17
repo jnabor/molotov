@@ -1,10 +1,14 @@
 import React from 'react'
 
-import { useTheme } from '@material-ui/core/styles'
-import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Container from '@material-ui/core/Container'
 import Link from '@material-ui/core/Link'
+import {
+  useTheme,
+  createStyles,
+  makeStyles,
+  Theme
+} from '@material-ui/core/styles'
 
 function Copyright() {
   return (
@@ -18,13 +22,15 @@ function Copyright() {
   )
 }
 
-const useStyles = makeStyles(theme => ({
-  footer: {
-    padding: theme.spacing(2),
-    marginTop: 'auto',
-    backgroundColor: '#eee'
-  }
-}))
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    footer: {
+      padding: theme.spacing(2),
+      marginTop: 'auto',
+      backgroundColor: '#eee'
+    }
+  })
+)
 
 export interface FooterProps {}
 

@@ -3,22 +3,28 @@ import Head from 'next/head'
 
 import Themer from './AppThemer'
 import Footer from './AppFooter'
-import { useTheme } from '@material-ui/core/styles'
-import { makeStyles } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Container from '@material-ui/core/Container'
+import {
+  useTheme,
+  createStyles,
+  makeStyles,
+  Theme
+} from '@material-ui/core/styles'
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    minHeight: '100vh'
-  },
-  main: {
-    marginTop: theme.spacing(8),
-    marginBottom: theme.spacing(2)
-  }
-}))
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      display: 'flex',
+      flexDirection: 'column',
+      minHeight: '100vh'
+    },
+    main: {
+      marginTop: theme.spacing(8),
+      marginBottom: theme.spacing(2)
+    }
+  })
+)
 
 export interface LayoutProps {
   title: string
