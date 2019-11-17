@@ -39,8 +39,7 @@ const useStyles = makeStyles(theme => ({
 export interface AuthProps {}
 
 const Auth: React.SFC<AuthProps> = () => {
-  const theme = useTheme()
-  const classes = useStyles(theme)
+  const classes = useStyles(useTheme())
 
   return (
     <Layout title='Molotov Auth'>

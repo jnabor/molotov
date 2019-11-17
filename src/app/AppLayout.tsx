@@ -2,22 +2,23 @@ import React from 'react'
 import Head from 'next/head'
 
 import Themer from './AppThemer'
-import Typography from '@material-ui/core/Typography'
-import Link from '@material-ui/core/Link'
-import Box from '@material-ui/core/Box'
+import Footer from './AppFooter'
+import { useTheme } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import Container from '@material-ui/core/Container'
 
-function Copyright() {
-  return (
-    <Typography variant='body2' color='textSecondary' align='center'>
-      {'Copyright © '}
-      <Link color='inherit' href='https://material-ui.com/'>
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  )
-}
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh'
+  },
+  main: {
+    marginTop: theme.spacing(8),
+    marginBottom: theme.spacing(2)
+  }
+}))
 
 export interface LayoutProps {
   title: string
@@ -25,13 +26,22 @@ export interface LayoutProps {
 }
 
 const Layout: React.SFC<LayoutProps> = ({ title, children }) => {
+  const classes = useStyles(useTheme())
   return (
     <div>
       <Head>
         <title>{title}</title>
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
-      <Themer>{children}</Themer>
+      <Themer>
+        <div className={classes.root}>
+          <CssBaseline />
+          <Container className={classes.main} maxWidth='sm'>
+            {children}
+          </Container>
+          <Footer />
+        </div>
+      </Themer>
     </div>
   )
 }
