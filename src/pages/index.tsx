@@ -14,11 +14,17 @@ const IndexPage: React.SFC<IndexPageProps> = () => {
     <Layout title='Molotov Home'>
       <Container maxWidth='xs'>
         <CssBaseline />
-        <h1> MOLOTOV COCKTAIL</h1>
+        <h1> MOLOTOV </h1>
         <p>
           Go to{' '}
           <Link href='/auth'>
-            <a>Auth</a>
+            <a>Sign In</a>
+          </Link>
+        </p>
+        <p>
+          Go to{' '}
+          <Link href='/auth/signup'>
+            <a>Sign Up</a>
           </Link>
         </p>
         <Button

@@ -8,10 +8,6 @@ see demo @ https://sonabstudios.github.io/molotov/
 
 ## Features
 
-### homepage
-
-- [ ] layout
-
 ### auth module
 
 - [ ] signin with google

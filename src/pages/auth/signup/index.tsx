@@ -1,11 +1,11 @@
 import React from 'react'
 import Router from 'next/router'
-import Layout from '../../app/AppLayout'
+import Layout from '../../../app/AppLayout'
 
-import AuthButton from '../../components/auth/AuthButton'
-import AuthEmailField from '../../components/auth/AuthEmailField'
-import AuthPasswordField from '../../components/auth/AuthPasswordField'
-import AuthLayout from '../../components/auth/AuthLayout'
+import AuthButton from '../../../components/auth/AuthButton'
+import AuthEmailField from '../../../components/auth/AuthEmailField'
+import AuthPasswordField from '../../../components/auth/AuthPasswordField'
+import AuthLayout from '../../../components/auth/AuthLayout'
 
 import Link from '@material-ui/core/Link'
 import Grid from '@material-ui/core/Grid'
@@ -25,33 +25,26 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-export interface AuthProps {}
+export interface AuthSignupProps {}
 
-const Auth: React.SFC<AuthProps> = () => {
+const AuthSignup: React.SFC<AuthSignupProps> = () => {
   const classes = useStyles(useTheme())
 
   return (
     <Layout title='Molotov Auth'>
-      <AuthLayout title='Sign In'>
+      <AuthLayout title='Sign Up'>
         <form className={classes.form} noValidate>
           <AuthEmailField />
           <AuthPasswordField />
-          <AuthButton>Sign In</AuthButton>
+          <AuthButton>Sign Up</AuthButton>
           <Grid container>
-            <Grid item xs>
-              <Link
-                href='#'
-                onClick={() => Router.push('/auth/reset')}
-                variant='body2'>
-                Forgot password?
-              </Link>
-            </Grid>
+            <Grid item xs></Grid>
             <Grid item>
               <Link
                 href='#'
-                onClick={() => Router.push('/auth/signup')}
+                onClick={() => Router.push('/auth')}
                 variant='body2'>
-                {"Don't have an account? Sign Up"}
+                {'Already have an account? Sign In'}
               </Link>
             </Grid>
           </Grid>
@@ -61,4 +54,4 @@ const Auth: React.SFC<AuthProps> = () => {
   )
 }
 
-export default Auth
+export default AuthSignup
