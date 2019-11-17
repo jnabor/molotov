@@ -1,0 +1,14 @@
+{
+    "trigger": true,
+    "modules": [
+        "verification-link"
+    ],
+    "parentResource": "molotov43fd53a4",
+    "functionName": "molotov43fd53a4CustomMessage",
+    "parentStack": "auth",
+    "triggerEnvs": "[{\"key\":\"RESOURCENAME\",\"value\":\"resourceName\"}]",
+    "triggerTemplate": "CustomMessage.json.ejs",
+    "roleName": "molotov43fd53a4CustomMessage",
+    "skipEdit": true,
+    "resourceName": "molotov43fd53a4CustomMessage"
+}

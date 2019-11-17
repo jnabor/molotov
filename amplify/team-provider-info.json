@@ -1,19 +1,28 @@
 {
-    "serverless": {
-        "awscloudformation": {
-            "AuthRoleName": "amplify-molotov-serverless-65340-authRole",
-            "UnauthRoleArn": "arn:aws:iam::815621908682:role/amplify-molotov-serverless-65340-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::815621908682:role/amplify-molotov-serverless-65340-authRole",
-            "Region": "us-west-2",
-            "DeploymentBucketName": "amplify-molotov-serverless-65340-deployment",
-            "UnauthRoleName": "amplify-molotov-serverless-65340-unauthRole",
-            "StackName": "amplify-molotov-serverless-65340",
-            "StackId": "arn:aws:cloudformation:us-west-2:815621908682:stack/amplify-molotov-serverless-65340/f03d3710-08c3-11ea-88b5-0ad849805b7e"
-        },
-        "categories": {
-            "auth": {
-                "molotova09ff279": {}
-            }
+  "serverless": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-molotov-serverless-65340-authRole",
+      "UnauthRoleArn": "arn:aws:iam::815621908682:role/amplify-molotov-serverless-65340-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::815621908682:role/amplify-molotov-serverless-65340-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-molotov-serverless-65340-deployment",
+      "UnauthRoleName": "amplify-molotov-serverless-65340-unauthRole",
+      "StackName": "amplify-molotov-serverless-65340",
+      "StackId": "arn:aws:cloudformation:us-west-2:815621908682:stack/amplify-molotov-serverless-65340/f03d3710-08c3-11ea-88b5-0ad849805b7e"
+    },
+    "categories": {
+      "function": {
+        "molotov43fd53a4CustomMessage": {
+          "REDIRECTURL": "https://sonabstudios.github.io/molotov",
+          "EMAILSUBJECT": "Molotov Email Confirmation",
+          "EMAILMESSAGE": "This is to confirm you google signup with molotov"
         }
+      },
+      "auth": {
+        "molotov43fd53a4": {
+          "hostedUIProviderCreds": "[{\"ProviderName\":\"Facebook\",\"client_id\":\"357287008412101\",\"client_secret\":\"99af4eaa30f8c70499135b0ef5a68a0d\"},{\"ProviderName\":\"Google\",\"client_id\":\"750246316923-imejnuqp4jaoj5ohrtu5c0vri5a03jl6.apps.googleusercontent.com\",\"client_secret\":\"HCO4YcfxojUGFAlLHv9PxkXm\"}]"
+        }
+      }
     }
+  }
 }
