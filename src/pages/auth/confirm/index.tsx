@@ -5,9 +5,7 @@ import Layout from '../../../app/AppLayout'
 import AuthButton from '../../../components/auth/AuthButton'
 import AuthLayout from '../../../components/auth/AuthLayout'
 
-import TextField from '@material-ui/core/TextField'
-import Link from '@material-ui/core/Link'
-import Grid from '@material-ui/core/Grid'
+import { Link, Grid, TextField } from '@material-ui/core'
 import {
   useTheme,
   createStyles,

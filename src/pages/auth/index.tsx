@@ -7,8 +7,7 @@ import AuthEmailField from '../../components/auth/AuthEmailField'
 import AuthPasswordField from '../../components/auth/AuthPasswordField'
 import AuthLayout from '../../components/auth/AuthLayout'
 
-import Link from '@material-ui/core/Link'
-import Grid from '@material-ui/core/Grid'
+import { Link, Grid } from '@material-ui/core'
 import {
   useTheme,
   createStyles,

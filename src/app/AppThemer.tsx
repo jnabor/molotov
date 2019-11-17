@@ -3,7 +3,7 @@ import Head from 'next/head'
 
 import { ThemeProvider } from '@material-ui/core/styles'
 import { createMuiTheme } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+import NoSsr from '@material-ui/core/NoSsr'
 
 const defaultTheme = {
   typography: {
@@ -35,7 +35,9 @@ const Themer: React.SFC<ThemerProps> = ({ children }) => {
           color: ${theme.palette.primary.main};
         }
       `}</style>
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <NoSsr>{children}</NoSsr>
+      </ThemeProvider>
     </div>
   )
 }
