@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Link from 'next/link'
 import Router from 'next/router'
-import Pacman from '../components/pacman'
 import Layout from '../app/AppLayout'
 
 export interface IndexPageProps {}
@@ -20,7 +19,6 @@ class IndexPage extends React.Component<IndexPageProps, IndexPageState> {
           </Link>
         </p>
         <button onClick={() => Router.push('/auth')}>Go to auth</button>
-        <Pacman />
       </Layout>
     )
   }

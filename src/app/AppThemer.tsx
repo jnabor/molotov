@@ -2,11 +2,15 @@ import React from 'react'
 import Head from 'next/head'
 
 import { ThemeProvider } from '@material-ui/core/styles'
+import { createMuiTheme } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
 
-const theme = {
-  backgroundColor: '#fff',
-  color: '#000'
+const defaultTheme = {
+  typography: {
+    fontFamily: ['Roboto', 'sans-serif'].join(',')
+  }
 }
+const theme = createMuiTheme(defaultTheme)
 
 export interface ThemerProps {
   children: any
@@ -26,9 +30,9 @@ const Themer: React.SFC<ThemerProps> = ({ children }) => {
       </Head>
       <style jsx global>{`
         body {
-          background: ${theme.backgroundColor};
-          font-family: 'Roboto', sans-serif;
-          color: ${theme.color};
+          background: ${theme.palette.background.paper};
+          font-family: ${theme.typography.fontFamily};
+          color: ${theme.palette.primary.main};
         }
       `}</style>
       <ThemeProvider theme={theme}>{children}</ThemeProvider>

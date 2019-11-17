@@ -10,7 +10,7 @@ see demo @ https://sonabstudios.github.io/molotov/
 
 ### homepage
 
-- [ ] google pacman
+- [ ] layout
 
 ### auth module
 
