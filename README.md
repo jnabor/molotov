@@ -4,6 +4,8 @@ Next.js React.js AWS Amplify cocktail - An app boilerplate for hackathons and de
 
 see demo @ https://sonabstudios.github.io/molotov/
 
+---
+
 ## Features
 
 ### homepage
@@ -23,6 +25,15 @@ see demo @ https://sonabstudios.github.io/molotov/
 
 - [ ] attributes
 - [ ] avatar
+
+### themes
+
+- [x] default
+- [ ] light
+- [ ] dark
+- [ ] joker
+
+---
 
 ## Tech Stack
 

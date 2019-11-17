@@ -1,11 +1,12 @@
 import React from 'react'
 import Link from 'next/link'
+import Layout from '../app/AppLayout'
 
 export interface errorPageProps {}
 
 const errorPage: React.SFC<errorPageProps> = () => {
   return (
-    <div>
+    <Layout title='Molotov Error'>
       <h1>Oops, something went wrong.</h1>
       <p>
         Try{' '}
@@ -13,7 +14,7 @@ const errorPage: React.SFC<errorPageProps> = () => {
           <a>going back</a>
         </Link>
       </p>
-    </div>
+    </Layout>
   )
 }
 
