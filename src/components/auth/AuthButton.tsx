@@ -22,6 +22,7 @@ export interface AuthButtonProps {
 
 const AuthButton: React.SFC<AuthButtonProps> = ({ children }) => {
   const classes = useStyles(useTheme())
+
   return (
     <Button
       type='submit'

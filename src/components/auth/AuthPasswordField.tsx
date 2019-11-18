@@ -19,7 +19,6 @@ import {
   makeStyles,
   Theme
 } from '@material-ui/core/styles'
-import { ConsoleLogger } from '@aws-amplify/core'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -70,14 +69,13 @@ const AuthPasswordField: React.SFC<AuthPasswordFieldProps> = ({ children }) => {
     }
     delay = setTimeout(() => {
       const valid = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}$/.test(pw)
-      console.log(valid)
       setState({
         ...state,
         valid: valid,
         hint: pw.length > 0 ? 'Invalid password.' : 'Enter password.'
       })
       delay = null
-    }, 200)
+    }, 300)
   }
 
   const hint = state.valid ? null : (

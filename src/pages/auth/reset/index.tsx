@@ -28,10 +28,18 @@ export interface AuthResetProps {}
 const AuthReset: React.SFC<AuthResetProps> = () => {
   const classes = useStyles(useTheme())
 
+  const submitHandler = (e: any) => {
+    e.preventDefault()
+    console.log('submit', e)
+  }
+
   return (
     <Layout title='Molotov Auth'>
       <AuthLayout title='Reset'>
-        <form className={classes.form} noValidate>
+        <form
+          className={classes.form}
+          onSubmit={e => submitHandler(e)}
+          noValidate>
           <AuthEmailField />
           <AuthButton>Reset</AuthButton>
           <Grid container>

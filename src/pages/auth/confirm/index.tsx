@@ -27,10 +27,18 @@ export interface AuthConfProps {}
 const AuthConf: React.SFC<AuthConfProps> = () => {
   const classes = useStyles(useTheme())
 
+  const submitHandler = (e: any) => {
+    e.preventDefault()
+    console.log('submit', e)
+  }
+
   return (
     <Layout title='Molotov Auth'>
       <AuthLayout title='Confirm'>
-        <form className={classes.form} noValidate>
+        <form
+          className={classes.form}
+          onSubmit={e => submitHandler(e)}
+          noValidate>
           <TextField
             variant='outlined'
             margin='normal'

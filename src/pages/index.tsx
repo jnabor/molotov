@@ -17,7 +17,7 @@ const IndexPage: React.SFC<IndexPageProps> = () => {
         <h1>MOLOTOV</h1>
         <p>
           Welcome! This is an app boilerplate using Next.js, React.js and AWS
-          AMplify
+          Amplify
         </p>
       </Container>
     </Layout>

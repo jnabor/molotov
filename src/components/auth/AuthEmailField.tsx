@@ -35,10 +35,10 @@ const AuthEmailField: React.SFC<AuthEmailFieldProps> = () => {
       setState({
         ...state,
         valid: valid,
-        hint: email.length > 0 ? 'Invalid email.' : 'Enter email.'
+        hint: valid ? '' : email.length > 0 ? 'Invalid email.' : 'Enter email.'
       })
       delay = null
-    }, 200)
+    }, 300)
   }
 
   return (

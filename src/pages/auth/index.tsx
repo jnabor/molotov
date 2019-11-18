@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Router from 'next/router'
 import Layout from '../../app/AppLayout'
 
@@ -29,10 +29,18 @@ export interface AuthProps {}
 const Auth: React.SFC<AuthProps> = () => {
   const classes = useStyles(useTheme())
 
+  const submitHandler = (e: any) => {
+    e.preventDefault()
+    console.log('submit', e)
+  }
+
   return (
     <Layout title='Molotov Auth'>
       <AuthLayout title='Sign In'>
-        <form className={classes.form} noValidate>
+        <form
+          className={classes.form}
+          onSubmit={e => submitHandler(e)}
+          noValidate>
           <AuthEmailField />
           <AuthPasswordField />
           <AuthButton>Sign In</AuthButton>

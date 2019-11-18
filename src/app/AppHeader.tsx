@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Router from 'next/router'
-import { shadows } from '@material-ui/system'
+
+import { AuthContext } from '../context/auth-context'
 
 import {
   Toolbar,
@@ -20,7 +21,7 @@ import {
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    appBar: { boxShadow: 'none', backgroundColor: '#b1b5ce' },
+    appBar: { boxShadow: 'none', backgroundColor: '#e7e7e7' },
     menuButton: {
       marginRight: theme.spacing(2)
     },
@@ -34,21 +35,38 @@ export interface FooterProps {}
 
 const Footer: React.SFC<FooterProps> = () => {
   const classes = useStyles(useTheme())
+  const authContext = useContext(AuthContext)
+
+  let authLink = (
+    <Button color='primary' onClick={() => Router.push('/auth')}>
+      Sign In
+    </Button>
+  )
+  if (authContext.authenticated) {
+    authLink = (
+      <Button
+        color='primary'
+        onClick={() => {
+          console.log('sign out')
+        }}>
+        Sign Out
+      </Button>
+    )
+  }
+
   return (
     <AppBar position='static' className={classes.appBar}>
-      <Toolbar variant='dense'>
+      <Toolbar>
         <IconButton
           edge='start'
           className={classes.menuButton}
           onClick={() => Router.push('/')}
           color='inherit'
           aria-label='home'>
-          <HomeIcon />
+          <HomeIcon color='primary' />
         </IconButton>
         <div className={classes.spacer}></div>
-        <Button color='primary' onClick={() => Router.push('/auth')}>
-          Sign In
-        </Button>
+        {authLink}
       </Toolbar>
     </AppBar>
   )
