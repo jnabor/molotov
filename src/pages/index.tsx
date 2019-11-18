@@ -14,25 +14,11 @@ const IndexPage: React.SFC<IndexPageProps> = () => {
     <Layout title='Molotov Home'>
       <Container maxWidth='xs'>
         <CssBaseline />
-        <h1> MOLOTOV </h1>
+        <h1>MOLOTOV</h1>
         <p>
-          Go to{' '}
-          <Link href='/auth'>
-            <a>Sign In</a>
-          </Link>
+          Welcome! This is an app boilerplate using Next.js, React.js and AWS
+          AMplify
         </p>
-        <p>
-          Go to{' '}
-          <Link href='/auth/signup'>
-            <a>Sign Up</a>
-          </Link>
-        </p>
-        <Button
-          onClick={() => Router.push('/auth')}
-          variant='outlined'
-          color='primary'>
-          SIGN IN
-        </Button>
       </Container>
     </Layout>
   )

@@ -13,6 +13,7 @@ import {
 interface EmailState {
   email: string
   valid: boolean
+  hint: string
 }
 
 export interface AuthEmailFieldProps {}
@@ -20,15 +21,24 @@ export interface AuthEmailFieldProps {}
 const AuthEmailField: React.SFC<AuthEmailFieldProps> = () => {
   const [state, setState] = useState<EmailState>({
     email: '',
-    valid: true
+    valid: true,
+    hint: ''
   })
 
+  let delay: any = null
   const validate = (email: string): any => {
-    console.log('validating')
-    setState({
-      ...state,
-      valid: /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email) ? true : false
-    })
+    if (delay !== null) {
+      clearTimeout(delay)
+    }
+    delay = setTimeout(() => {
+      const valid = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email)
+      setState({
+        ...state,
+        valid: valid,
+        hint: email.length > 0 ? 'Invalid email.' : 'Enter email.'
+      })
+      delay = null
+    }, 200)
   }
 
   return (
@@ -42,6 +52,7 @@ const AuthEmailField: React.SFC<AuthEmailFieldProps> = () => {
       label='Email Address'
       name='email'
       autoComplete='email'
+      helperText={state.hint}
       onChange={e => validate(e.currentTarget.value)}
       autoFocus
     />

@@ -3,6 +3,8 @@ import Head from 'next/head'
 
 import Themer from './AppThemer'
 import Footer from './AppFooter'
+import Header from './AppHeader'
+
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Container from '@material-ui/core/Container'
 import {
@@ -42,6 +44,7 @@ const Layout: React.SFC<LayoutProps> = ({ title, children }) => {
       <Themer>
         <div className={classes.root}>
           <CssBaseline />
+          <Header />
           <Container className={classes.main} maxWidth='sm'>
             {children}
           </Container>

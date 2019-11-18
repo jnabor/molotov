@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
-import Button from '@material-ui/core/Button'
-import TextField from '@material-ui/core/TextField'
-import FormControl from '@material-ui/core/FormControl'
-import InputLabel from '@material-ui/core/InputLabel'
-import OutlinedInput from '@material-ui/core/OutlinedInput'
-import InputAdornment from '@material-ui/core/InputAdornment'
-import IconButton from '@material-ui/core/IconButton'
-import Visibility from '@material-ui/icons/Visibility'
-import VisibilityOff from '@material-ui/icons/VisibilityOff'
+import {
+  Button,
+  TextField,
+  FormControl,
+  InputLabel,
+  OutlinedInput,
+  InputAdornment,
+  IconButton,
+  FormHelperText
+} from '@material-ui/core'
+
+import { Visibility, VisibilityOff } from '@material-ui/icons'
 
 import {
   useTheme,
@@ -16,6 +19,7 @@ import {
   makeStyles,
   Theme
 } from '@material-ui/core/styles'
+import { ConsoleLogger } from '@aws-amplify/core'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -30,23 +34,27 @@ export interface AuthPasswordFieldProps {}
 interface PwState {
   password: string
   showPassword: boolean
+  valid: boolean
+  hint: string
 }
 
 const AuthPasswordField: React.SFC<AuthPasswordFieldProps> = ({ children }) => {
   const classes = useStyles(useTheme())
-  const [values, setValues] = React.useState<PwState>({
+  const [state, setState] = useState<PwState>({
     password: '',
-    showPassword: false
+    showPassword: false,
+    valid: true,
+    hint: ''
   })
 
   const handleChange = (prop: keyof PwState) => (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setValues({ ...values, [prop]: event.target.value })
+    setState({ ...state, [prop]: event.target.value })
   }
 
   const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword })
+    setState({ ...state, showPassword: !state.showPassword })
   }
 
   const handleMouseDownPassword = (
@@ -55,31 +63,57 @@ const AuthPasswordField: React.SFC<AuthPasswordFieldProps> = ({ children }) => {
     event.preventDefault()
   }
 
+  let delay: any = null
+  const validate = (pw: string): any => {
+    if (delay !== null) {
+      clearTimeout(delay)
+    }
+    delay = setTimeout(() => {
+      const valid = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}$/.test(pw)
+      console.log(valid)
+      setState({
+        ...state,
+        valid: valid,
+        hint: pw.length > 0 ? 'Invalid password.' : 'Enter password.'
+      })
+      delay = null
+    }, 200)
+  }
+
+  const hint = state.valid ? null : (
+    <FormHelperText error={!state.valid} id='standard-weight-helper-text'>
+      {state.hint}
+    </FormHelperText>
+  )
+
   return (
     <FormControl
       required
       variant='outlined'
       fullWidth
       className={classes.textfield}>
-      <InputLabel htmlFor='outlined-adornment-password'>Password</InputLabel>
+      <InputLabel htmlFor='outlined-adornment-password' error={!state.valid}>
+        Password
+      </InputLabel>
       <OutlinedInput
         required
+        error={!state.valid}
         id='outlined-adornment-password'
-        type={values.showPassword ? 'text' : 'password'}
-        value={values.password}
-        onChange={handleChange('password')}
+        type={state.showPassword ? 'text' : 'password'}
+        onChange={e => validate(e.target.value)}
         endAdornment={
           <InputAdornment position='end'>
             <IconButton
               aria-label='toggle password visibility'
               onClick={handleClickShowPassword}
               onMouseDown={handleMouseDownPassword}>
-              {values.showPassword ? <Visibility /> : <VisibilityOff />}
+              {state.showPassword ? <Visibility /> : <VisibilityOff />}
             </IconButton>
           </InputAdornment>
         }
         labelWidth={80}
       />
+      {hint}
     </FormControl>
   )
 }
