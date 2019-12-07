@@ -1,8 +1,8 @@
 # molotov-cocktail
 
-Next.js React.js AWS Amplify cocktail - An app boilerplate for hackathons and demos
+Next React AWS Amplify Cocktail - A SaaS starter kit
 
-see demo @ https://sonabstudios.github.io/molotov/
+see demo @ https://dev.d2r0i875og3a0l.amplifyapp.com
 
 ---
 
@@ -12,8 +12,8 @@ see demo @ https://sonabstudios.github.io/molotov/
 
 - [ ] signin with google
 - [ ] signin with facebook
-- [ ] signin with email
-  - [ ] signup with email
+- [x] signin with email
+  - [x] signup with email
   - [ ] reset password
 - [ ] signout
 
@@ -21,6 +21,12 @@ see demo @ https://sonabstudios.github.io/molotov/
 
 - [ ] attributes
 - [ ] avatar
+
+### push notifications
+
+### qr code generator
+
+### database api
 
 ### themes
 
@@ -34,13 +40,7 @@ see demo @ https://sonabstudios.github.io/molotov/
 ## Tech Stack
 
 - TypeScript
-- JavaScript
-- ReactJS
-- NextJS
+- React
+- Next
 - Material-UI
 - Amplify
-- GraphQL
-- AWS AppSync
-- AWS Lambda
-- AWS Cognito
-- AWS DynamoDB
