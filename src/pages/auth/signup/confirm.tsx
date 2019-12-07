@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Router from 'next/router'
 import Layout from '../../../app/AppLayout'
-
+import { AuthContext } from '../../../context/auth-context'
 import AuthButton from '../../../components/auth/AuthButton'
 import AuthLayout from '../../../components/auth/AuthLayout'
+import Snackbar from '../../../components/common/Snackbar'
 
 import { Link, Grid, TextField } from '@material-ui/core'
 import {
@@ -25,13 +26,26 @@ const useStyles = makeStyles((theme: Theme) =>
 export interface AuthConfProps {}
 
 const AuthConf: React.SFC<AuthConfProps> = () => {
+  const authContext = useContext(AuthContext)
   const [code, setCode] = useState<string>('')
   const [disable, setDisable] = useState<boolean>(true)
   const [hint, setHint] = useState<string>('')
+  const [error, setError] = useState<string>('')
 
   const submitHandler = (e: any) => {
     e.preventDefault()
     console.log('submit', code)
+    e.preventDefault()
+    authContext
+      .confirmSignUp(code)
+      .then(data => {
+        console.log(data)
+        Router.push('/auth')
+      })
+      .catch(err => {
+        console.error('error:', err)
+        setError(err)
+      })
   }
 
   let delay: any = null
@@ -52,6 +66,7 @@ const AuthConf: React.SFC<AuthConfProps> = () => {
   return (
     <Layout title='Molotov Auth'>
       <AuthLayout title='Confirm'>
+        <Snackbar variant='error' message={error} />
         <form
           className={classes.form}
           onSubmit={e => submitHandler(e)}

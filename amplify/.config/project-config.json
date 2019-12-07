@@ -1,17 +1,15 @@
 {
-    "projectName": "molotov",
-    "version": "2.0",
-    "frontend": "javascript",
-    "javascript": {
-        "framework": "react",
-        "config": {
-            "SourceDir": "src",
-            "DistributionDir": "out",
-            "BuildCommand": "npm run build",
-            "StartCommand": "npm start"
-        }
-    },
-    "providers": [
-        "awscloudformation"
-    ]
+  "projectName": "molotov",
+  "version": "2.0",
+  "frontend": "javascript",
+  "javascript": {
+    "framework": "react",
+    "config": {
+      "SourceDir": "src",
+      "DistributionDir": "src/out",
+      "BuildCommand": "npm run buildexport",
+      "StartCommand": "npm run dev"
+    }
+  },
+  "providers": ["awscloudformation"]
 }

@@ -28,32 +28,21 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-export interface AuthPasswordFieldProps {}
-
-interface PwState {
-  password: string
-  showPassword: boolean
-  valid: boolean
-  hint: string
+export interface AuthPasswordFieldProps {
+  setPassword: (password: string) => void
 }
 
-const AuthPasswordField: React.SFC<AuthPasswordFieldProps> = ({ children }) => {
+const AuthPasswordField: React.SFC<AuthPasswordFieldProps> = ({
+  setPassword
+}) => {
   const classes = useStyles(useTheme())
-  const [state, setState] = useState<PwState>({
-    password: '',
-    showPassword: false,
-    valid: true,
-    hint: ''
-  })
 
-  const handleChange = (prop: keyof PwState) => (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setState({ ...state, [prop]: event.target.value })
-  }
+  const [showPassword, setShowPassword] = useState<boolean>(false)
+  const [valid, setValid] = useState<boolean>(true)
+  const [hint, setHint] = useState<string>('')
 
   const handleClickShowPassword = () => {
-    setState({ ...state, showPassword: !state.showPassword })
+    setShowPassword(!showPassword)
   }
 
   const handleMouseDownPassword = (
@@ -63,24 +52,22 @@ const AuthPasswordField: React.SFC<AuthPasswordFieldProps> = ({ children }) => {
   }
 
   let delay: any = null
-  const validate = (pw: string): any => {
+  const validate = (password: string): any => {
     if (delay !== null) {
       clearTimeout(delay)
     }
     delay = setTimeout(() => {
-      const valid = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}$/.test(pw)
-      setState({
-        ...state,
-        valid: valid,
-        hint: pw.length > 0 ? 'Invalid password.' : 'Enter password.'
-      })
+      const isValid = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}$/.test(password)
+      setValid(isValid)
+      setHint(password.length > 0 ? 'Invalid password.' : 'Enter password.')
+      setPassword(isValid ? password : '')
       delay = null
     }, 300)
   }
 
-  const hint = state.valid ? null : (
-    <FormHelperText error={!state.valid} id='standard-weight-helper-text'>
-      {state.hint}
+  const hintString = valid ? null : (
+    <FormHelperText error={!valid} id='standard-weight-helper-text'>
+      {hint}
     </FormHelperText>
   )
 
@@ -90,14 +77,14 @@ const AuthPasswordField: React.SFC<AuthPasswordFieldProps> = ({ children }) => {
       variant='outlined'
       fullWidth
       className={classes.textfield}>
-      <InputLabel htmlFor='outlined-adornment-password' error={!state.valid}>
+      <InputLabel htmlFor='outlined-adornment-password' error={!valid}>
         Password
       </InputLabel>
       <OutlinedInput
         required
-        error={!state.valid}
+        error={!valid}
         id='outlined-adornment-password'
-        type={state.showPassword ? 'text' : 'password'}
+        type={showPassword ? 'text' : 'password'}
         onChange={e => validate(e.target.value)}
         endAdornment={
           <InputAdornment position='end'>
@@ -105,13 +92,15 @@ const AuthPasswordField: React.SFC<AuthPasswordFieldProps> = ({ children }) => {
               aria-label='toggle password visibility'
               onClick={handleClickShowPassword}
               onMouseDown={handleMouseDownPassword}>
-              {state.showPassword ? <Visibility /> : <VisibilityOff />}
+              {showPassword ? <Visibility /> : <VisibilityOff />}
             </IconButton>
           </InputAdornment>
         }
         labelWidth={80}
       />
-      {hint}
+      <FormHelperText error={!valid} id='standard-weight-helper-text'>
+        {hint}
+      </FormHelperText>
     </FormControl>
   )
 }

@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import Router from 'next/router'
-import Head from 'next/head'
 import Layout from '../app/HomeLayout'
-import AuthLayout from '../components/auth/AuthLayout'
+
 import {
   Grid,
   Link,
@@ -12,10 +11,12 @@ import {
   Typography
 } from '@material-ui/core'
 
+import Snackbar from '../components/common/Snackbar'
+import { AuthContext } from '../context/auth-context'
 import AuthButton from '../components/auth/AuthButton'
 import AuthEmailField from '../components/auth/AuthEmailField'
 import AuthPasswordField from '../components/auth/AuthPasswordField'
-import Footer from '../app/AppFooter'
+import RandomImage from '../components/home/randomImg'
 
 import {
   useTheme,
@@ -29,17 +30,6 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       display: 'flex',
       minHeight: '100vh'
-    },
-    image: {
-      backgroundImage: 'url(https://source.unsplash.com/random)',
-      backgroundRepeat: 'no-repeat',
-      backgroundColor: theme.palette.grey[50],
-      backgroundSize: 'cover',
-      backgroundPosition: 'center'
-    },
-    image2: {
-      height: '100%',
-      width: '100%'
     },
     paper: {
       margin: theme.spacing(2),
@@ -63,19 +53,53 @@ const useStyles = makeStyles((theme: Theme) =>
 export interface IndexPageProps {}
 
 const IndexPage: React.SFC<IndexPageProps> = () => {
-  const classes = useStyles(useTheme())
+  const authContext = useContext(AuthContext)
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+  const [disable, setDisable] = useState<boolean>(true)
+  const [error, setError] = useState<string>('')
+
+  useEffect(() => {
+    setDisable(!(email && password))
+  }, [email, password])
 
   const submitHandler = (e: any) => {
     e.preventDefault()
-    console.log('submit', e)
+    authContext
+      .signIn(email, password)
+      .then(data => {
+        console.log(data)
+      })
+      .catch(err => {
+        console.error('error:', err)
+        setError(err)
+      })
   }
+
+  const classes = useStyles(useTheme())
+
+  const login = authContext.isAuth ? null : (
+    <form className={classes.form} onSubmit={e => submitHandler(e)} noValidate>
+      <AuthEmailField setEmail={email => setEmail(email)} />
+      <AuthPasswordField setPassword={password => setPassword(password)} />
+      <AuthButton disabled={disable}>Sign In</AuthButton>
+      <Grid container>
+        <Grid item xs>
+          <Link onClick={() => Router.push('/auth/reset')} variant='body2'>
+            Forgot password?
+          </Link>
+        </Grid>
+        <Grid item>
+          <Link onClick={() => Router.push('/auth/signup')} variant='body2'>
+            {"Don't have an account? Sign Up"}
+          </Link>
+        </Grid>
+      </Grid>
+    </form>
+  )
 
   return (
     <div>
-      <Head>
-        <title>Molotov Home</title>
-        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
-      </Head>
       <Grid container component='main' className={classes.root}>
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <Layout title='Molotov Home'>
@@ -86,37 +110,15 @@ const IndexPage: React.SFC<IndexPageProps> = () => {
                   Molotov™ Serverless
                 </Typography>
                 <Typography variant='subtitle2'>
-                  Next.js React.js AWS Amplify
+                  SaaS Starter with Next React Amplify
                 </Typography>
-                <form
-                  className={classes.form}
-                  onSubmit={e => submitHandler(e)}
-                  noValidate>
-                  <AuthEmailField />
-                  <AuthPasswordField />
-                  <AuthButton>Sign In</AuthButton>
-                  <Grid container>
-                    <Grid item xs>
-                      <Link
-                        onClick={() => Router.push('/auth/reset')}
-                        variant='body2'>
-                        Forgot password?
-                      </Link>
-                    </Grid>
-                    <Grid item>
-                      <Link
-                        onClick={() => Router.push('/auth/signup')}
-                        variant='body2'>
-                        {"Don't have an account? Sign Up"}
-                      </Link>
-                    </Grid>
-                  </Grid>
-                </form>
+                <Snackbar variant='error' message={error} />
+                {login}
               </div>
             </Container>
           </Layout>
         </Grid>
-        <Grid item xs={false} sm={4} md={7} className={classes.image} />
+        <RandomImage />
       </Grid>
     </div>
   )

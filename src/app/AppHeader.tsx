@@ -31,7 +31,7 @@ const Header: React.SFC<HeaderProps> = () => {
   const classes = useStyles(useTheme())
   const authContext = useContext(AuthContext)
 
-  let authLink = authContext.authenticated ? (
+  let authLink = authContext.isAuth ? (
     <Button
       color='primary'
       onClick={() => {

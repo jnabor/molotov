@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Router from 'next/router'
 import Layout from '../../../app/AppLayout'
 
@@ -28,6 +28,8 @@ export interface AuthResetProps {}
 const AuthReset: React.SFC<AuthResetProps> = () => {
   const classes = useStyles(useTheme())
 
+  const [email, setEmail] = useState<string>('')
+
   const submitHandler = (e: any) => {
     e.preventDefault()
     console.log('submit', e)
@@ -40,8 +42,8 @@ const AuthReset: React.SFC<AuthResetProps> = () => {
           className={classes.form}
           onSubmit={e => submitHandler(e)}
           noValidate>
-          <AuthEmailField />
-          <AuthButton>Reset</AuthButton>
+          <AuthEmailField setEmail={email => setEmail(email)} />
+          <AuthButton disabled={true}>Reset</AuthButton>
           <Grid container>
             <Grid item xs></Grid>
             <Grid item>

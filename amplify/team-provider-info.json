@@ -1,28 +1,22 @@
 {
-  "serverless": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-molotov-serverless-65340-authRole",
-      "UnauthRoleArn": "arn:aws:iam::815621908682:role/amplify-molotov-serverless-65340-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::815621908682:role/amplify-molotov-serverless-65340-authRole",
-      "Region": "us-west-2",
-      "DeploymentBucketName": "amplify-molotov-serverless-65340-deployment",
-      "UnauthRoleName": "amplify-molotov-serverless-65340-unauthRole",
-      "StackName": "amplify-molotov-serverless-65340",
-      "StackId": "arn:aws:cloudformation:us-west-2:815621908682:stack/amplify-molotov-serverless-65340/f03d3710-08c3-11ea-88b5-0ad849805b7e"
-    },
-    "categories": {
-      "function": {
-        "molotov43fd53a4CustomMessage": {
-          "REDIRECTURL": "https://sonabstudios.github.io/molotov",
-          "EMAILSUBJECT": "Molotov Email Confirmation",
-          "EMAILMESSAGE": "This is to confirm you google signup with molotov"
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-molotov-dev-131729-authRole",
+            "UnauthRoleArn": "arn:aws:iam::815621908682:role/amplify-molotov-dev-131729-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::815621908682:role/amplify-molotov-dev-131729-authRole",
+            "Region": "ap-southeast-1",
+            "DeploymentBucketName": "amplify-molotov-dev-131729-deployment",
+            "UnauthRoleName": "amplify-molotov-dev-131729-unauthRole",
+            "StackName": "amplify-molotov-dev-131729",
+            "StackId": "arn:aws:cloudformation:ap-southeast-1:815621908682:stack/amplify-molotov-dev-131729/deb53630-18b0-11ea-b11d-028a077ce4f4",
+            "AmplifyAppId": "d2r0i875og3a0l"
+        },
+        "categories": {
+            "auth": {
+                "molotov6799fdef": {
+                    "hostedUIProviderCreds": "[{\"ProviderName\":\"Google\",\"client_id\":\"\\t158903556810-32mt1qju1jss12hrf8jl1ohtmscfi6ng.apps.googleusercontent.com\",\"client_secret\":\"txWeTffYAGtRsO2hYx1NnHzu\"}]"
+                }
+            }
         }
-      },
-      "auth": {
-        "molotov43fd53a4": {
-          "hostedUIProviderCreds": "[{\"ProviderName\":\"Facebook\",\"client_id\":\"357287008412101\",\"client_secret\":\"99af4eaa30f8c70499135b0ef5a68a0d\"},{\"ProviderName\":\"Google\",\"client_id\":\"750246316923-imejnuqp4jaoj5ohrtu5c0vri5a03jl6.apps.googleusercontent.com\",\"client_secret\":\"HCO4YcfxojUGFAlLHv9PxkXm\"}]"
-        }
-      }
     }
-  }
 }

@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import Router from 'next/router'
 import Layout from '../../../app/AppLayout'
-
-import AuthButton from '../../../components/auth/AuthButton'
+import AuthLayout from '../../../components/auth/AuthLayout'
 import AuthEmailField from '../../../components/auth/AuthEmailField'
 import AuthPasswordField from '../../../components/auth/AuthPasswordField'
-import AuthLayout from '../../../components/auth/AuthLayout'
-
+import AuthButton from '../../../components/auth/AuthButton'
+import { AuthContext } from '../../../context/auth-context'
+import Snackbar from '../../../components/common/Snackbar'
 import { Link, Grid } from '@material-ui/core'
+
 import {
   useTheme,
   createStyles,
@@ -27,23 +28,43 @@ const useStyles = makeStyles((theme: Theme) =>
 export interface AuthSignupProps {}
 
 const AuthSignup: React.SFC<AuthSignupProps> = () => {
-  const classes = useStyles(useTheme())
+  const authContext = useContext(AuthContext)
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+  const [disable, setDisable] = useState<boolean>(true)
+  const [error, setError] = useState<string>('')
+
+  useEffect(() => {
+    setDisable(!(email && password))
+  }, [email, password])
 
   const submitHandler = (e: any) => {
     e.preventDefault()
-    console.log('submit', e)
+    authContext
+      .signUp(email, password)
+      .then(data => {
+        console.log(data)
+        Router.push('/auth/signup/confirm')
+      })
+      .catch(err => {
+        console.error('error:', err)
+        setError(err)
+      })
   }
+
+  const classes = useStyles(useTheme())
 
   return (
     <Layout title='Molotov Auth'>
       <AuthLayout title='Sign Up'>
+        <Snackbar variant='error' message={error} />
         <form
           className={classes.form}
           onSubmit={e => submitHandler(e)}
           noValidate>
-          <AuthEmailField />
-          <AuthPasswordField />
-          <AuthButton>Sign Up</AuthButton>
+          <AuthEmailField setEmail={email => setEmail(email)} />
+          <AuthPasswordField setPassword={password => setPassword(password)} />
+          <AuthButton disabled={disable}>Sign Up</AuthButton>
           <Grid container>
             <Grid item xs></Grid>
             <Grid item>

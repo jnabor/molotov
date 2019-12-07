@@ -18,14 +18,16 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export interface AuthButtonProps {
   children: any
+  disabled: boolean
 }
 
-const AuthButton: React.SFC<AuthButtonProps> = ({ children }) => {
+const AuthButton: React.SFC<AuthButtonProps> = ({ children, disabled }) => {
   const classes = useStyles(useTheme())
 
   return (
     <Button
       type='submit'
+      disabled={disabled}
       fullWidth
       variant='contained'
       color='primary'

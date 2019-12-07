@@ -3,9 +3,7 @@ import Head from 'next/head'
 
 import Themer from './AppThemer'
 import Footer from './AppFooter'
-import Header from './AppHeader'
 
-import CssBaseline from '@material-ui/core/CssBaseline'
 import Container from '@material-ui/core/Container'
 import {
   useTheme,
@@ -37,7 +35,7 @@ export interface LayoutProps {
 const Layout: React.SFC<LayoutProps> = ({ title, children }) => {
   const classes = useStyles(useTheme())
   return (
-    <div>
+    <React.Fragment>
       <Head>
         <title>{title}</title>
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
@@ -48,7 +46,7 @@ const Layout: React.SFC<LayoutProps> = ({ title, children }) => {
           <Footer />
         </div>
       </Themer>
-    </div>
+    </React.Fragment>
   )
 }
 
