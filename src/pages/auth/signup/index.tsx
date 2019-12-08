@@ -25,9 +25,9 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-export interface AuthSignupProps {}
+export interface AuthSignUpProps {}
 
-const AuthSignup: React.SFC<AuthSignupProps> = () => {
+const AuthSignUp: React.SFC<AuthSignUpProps> = () => {
   const authContext = useContext(AuthContext)
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
@@ -82,4 +82,4 @@ const AuthSignup: React.SFC<AuthSignupProps> = () => {
   )
 }
 
-export default AuthSignup
+export default AuthSignUp
