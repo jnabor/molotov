@@ -8,7 +8,6 @@
   "scripts": {
     "dev": "next dev ./src",
     "build": "next build ./src",
-    "ci_build": "next build",
     "export": "next export ./src"
   },
   "author": "Jayson Nabor",
