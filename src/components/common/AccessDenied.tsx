@@ -1,6 +1,5 @@
 import React from 'react'
-import Link from 'next/link'
-import Layout from '../app/AppLayout'
+import Layout from '../../app/AppLayout'
 
 import {
   useTheme,
@@ -21,24 +20,18 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-export interface errorPageProps {}
+export interface AccessDeniedProps {}
 
-const errorPage: React.SFC<errorPageProps> = () => {
+const AccessDenied: React.SFC<AccessDeniedProps> = () => {
   const classes = useStyles(useTheme())
   return (
-    <Layout title='Molotov Error'>
+    <Layout title='Access Denied'>
       <CssBaseline />
       <div className={classes.paper}>
-        <h1>Oops, something went wrong.</h1>
-        <p>
-          Go to{' '}
-          <Link href='/'>
-            <a>home</a>
-          </Link>
-        </p>
+        <h1>Access Denied!</h1>
       </div>
     </Layout>
   )
 }
 
-export default errorPage
+export default AccessDenied

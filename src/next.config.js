@@ -7,7 +7,8 @@ module.exports = {
       '/auth/signup': { page: '/auth/signup' },
       '/auth/signup/confirm': { page: '/auth/signup/confirm' },
       '/auth/reset': { page: '/auth/reset' },
-      '/auth/confirm': { page: '/auth/confirm' }
+      '/auth/confirm': { page: '/auth/confirm' },
+      '/dashboard': { page: '/dashboard' }
     }
   }
 }

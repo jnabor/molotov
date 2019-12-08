@@ -45,7 +45,7 @@ const Auth: React.SFC<AuthProps> = () => {
       .signIn(email, password)
       .then(data => {
         console.log(data)
-        Router.push('/')
+        Router.push('/dashboard')
       })
       .catch(err => {
         console.error('error:', err)

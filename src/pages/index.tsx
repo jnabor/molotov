@@ -11,6 +11,7 @@ import {
   Typography
 } from '@material-ui/core'
 
+import Button from '@material-ui/core/Button'
 import Snackbar from '../components/common/Snackbar'
 import { AuthContext } from '../context/auth-context'
 import AuthButton from '../components/auth/AuthButton'
@@ -43,8 +44,7 @@ const useStyles = makeStyles((theme: Theme) =>
       width: '100%', // Fix IE 11 issue.
       marginTop: theme.spacing(3)
     },
-    submit: {
-      height: '100%',
+    dashlink: {
       margin: theme.spacing(3, 0, 2)
     }
   })
@@ -63,22 +63,29 @@ const IndexPage: React.SFC<IndexPageProps> = () => {
     setDisable(!(email && password))
   }, [email, password])
 
-  const submitHandler = (e: any) => {
+  const submitHandler = async (e: any) => {
     e.preventDefault()
-    authContext
-      .signIn(email, password)
-      .then(data => {
-        console.log(data)
-      })
-      .catch(err => {
-        console.error('error:', err)
-        setError(err)
-      })
+    try {
+      const signin = await authContext.signIn(email, password)
+      console.log(signin)
+      Router.push('/dashboard')
+    } catch (err) {
+      console.error('error:', err)
+      setError(err)
+    }
   }
 
   const classes = useStyles(useTheme())
 
-  const login = authContext.isAuth ? null : (
+  const login = authContext.isAuth ? (
+    <Button
+      color='primary'
+      variant='contained'
+      onClick={() => Router.push('/dashboard')}
+      className={classes.dashlink}>
+      Dashboard
+    </Button>
+  ) : (
     <form className={classes.form} onSubmit={e => submitHandler(e)} noValidate>
       <AuthEmailField setEmail={email => setEmail(email)} />
       <AuthPasswordField setPassword={password => setPassword(password)} />
