@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { AuthContext } from '../../context/auth-context'
+import { AuthContext } from './auth-context'
 import AccessDenied from '../common/AccessDenied'
 
 export interface withAuthenticatorProps {}

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import Router from 'next/router'
 
-import { AuthContext } from '../context/auth-context'
+import { AuthContext } from '../auth/auth-context'
 
 import { Toolbar, AppBar, IconButton, Button } from '@material-ui/core'
 import HomeIcon from '@material-ui/icons/Home'

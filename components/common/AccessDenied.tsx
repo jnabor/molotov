@@ -1,5 +1,5 @@
 import React from 'react'
-import Layout from '../../app/AppLayout'
+import Layout from '../app/AppLayout'
 
 import {
   useTheme,

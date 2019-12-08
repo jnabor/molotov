@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Router from 'next/router'
-import Layout from '../../../app/AppLayout'
+import Layout from '../../../components/app/AppLayout'
 
 import AuthButton from '../../../components/auth/AuthButton'
 import AuthEmailField from '../../../components/auth/AuthEmailField'

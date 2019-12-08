@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Auth from '@aws-amplify/auth'
-import config from '../aws-exports'
-import { rejects } from 'assert'
+import config from '../../aws-exports'
 Auth.configure(config)
 
 export interface AuthContextProps {

@@ -5,7 +5,6 @@ import clsx from 'clsx'
 
 import {
   makeStyles,
-  Box,
   Drawer,
   CssBaseline,
   Toolbar,
@@ -15,17 +14,15 @@ import {
   Divider,
   Container,
   IconButton,
-  Badge,
   Paper,
   Grid,
-  Link,
   Button
 } from '@material-ui/core'
 
 import HomeIcon from '@material-ui/icons/Home'
 import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
-import { AuthContext } from '../context/auth-context'
+import { AuthContext } from '../components/auth/auth-context'
 
 import {
   mainListItems,
@@ -34,7 +31,7 @@ import {
 import Chart from '../components/dashboard/Chart'
 import Deposits from '../components/dashboard/Deposits'
 import Orders from '../components/dashboard/Orders'
-import Footer from '../app/AppFooter'
+import Footer from '../components/app/AppFooter'
 import withAuthenticator from '../components/auth/withAuthenticator'
 
 const drawerWidth = 240

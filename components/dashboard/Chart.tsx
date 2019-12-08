@@ -10,7 +10,6 @@ import {
 } from 'recharts'
 import Title from './Title'
 
-// Generate Sales Data
 function createData(time: string, amount: number | undefined) {
   return { time, amount }
 }

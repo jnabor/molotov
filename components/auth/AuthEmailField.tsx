@@ -1,13 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import _ from 'lodash'
 
 import TextField from '@material-ui/core/TextField'
-import {
-  useTheme,
-  createStyles,
-  makeStyles,
-  Theme
-} from '@material-ui/core/styles'
 
 interface EmailState {
   email: string

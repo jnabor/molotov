@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react'
 import Router from 'next/router'
-import Layout from '../app/HomeLayout'
+import Layout from '../components/app/HomeLayout'
 
 import {
   Grid,
@@ -13,7 +13,7 @@ import {
 
 import Button from '@material-ui/core/Button'
 import Snackbar from '../components/common/Snackbar'
-import { AuthContext } from '../context/auth-context'
+import { AuthContext } from '../components/auth/auth-context'
 import AuthButton from '../components/auth/AuthButton'
 import AuthEmailField from '../components/auth/AuthEmailField'
 import AuthPasswordField from '../components/auth/AuthPasswordField'
