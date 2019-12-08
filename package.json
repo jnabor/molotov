@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "next dev ./src",
     "build": "next build ./src",
+    "start": "next start ./src",
     "export": "next export ./src"
   },
   "author": "Jayson Nabor",
