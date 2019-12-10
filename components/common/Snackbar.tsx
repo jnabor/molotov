@@ -95,6 +95,7 @@ const SnackBar: React.SFC<SnackBarProps> = ({ variant, message }) => {
   const [open, setOpen] = useState(true)
 
   const handleClose = (event?: SyntheticEvent, reason?: string) => {
+    event && console.log(event)
     if (reason === 'clickaway') {
       return
     }

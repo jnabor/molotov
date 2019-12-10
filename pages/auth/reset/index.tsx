@@ -33,6 +33,7 @@ const AuthReset: React.SFC<AuthResetProps> = () => {
   const submitHandler = (e: any) => {
     e.preventDefault()
     console.log('submit', e)
+    console.log(email)
   }
 
   return (

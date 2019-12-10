@@ -3,12 +3,6 @@ import _ from 'lodash'
 
 import TextField from '@material-ui/core/TextField'
 
-interface EmailState {
-  email: string
-  valid: boolean
-  hint: string
-}
-
 export interface AuthEmailFieldProps {
   setEmail: (email: string) => void
 }

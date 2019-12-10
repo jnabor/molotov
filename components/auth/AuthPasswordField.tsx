@@ -97,7 +97,7 @@ const AuthPasswordField: React.SFC<AuthPasswordFieldProps> = ({
         labelWidth={80}
       />
       <FormHelperText error={!valid} id='standard-weight-helper-text'>
-        {hint}
+        {hintString}
       </FormHelperText>
     </FormControl>
   )

@@ -5,14 +5,9 @@ import Themer from './AppThemer'
 import Footer from './AppFooter'
 
 import Container from '@material-ui/core/Container'
-import {
-  useTheme,
-  createStyles,
-  makeStyles,
-  Theme
-} from '@material-ui/core/styles'
+import { createStyles, makeStyles } from '@material-ui/core/styles'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     root: {
       display: 'flex',
@@ -33,7 +28,7 @@ export interface LayoutProps {
 }
 
 const Layout: React.SFC<LayoutProps> = ({ title, children }) => {
-  const classes = useStyles(useTheme())
+  const classes = useStyles()
   return (
     <React.Fragment>
       <Head>

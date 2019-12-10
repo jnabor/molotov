@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Auth from '@aws-amplify/auth'
+
 import config from '../../aws-exports'
 Auth.configure(config)
 
@@ -14,9 +15,9 @@ export interface AuthContextProps {
 export const AuthContext = React.createContext<AuthContextProps>({
   isAuth: false,
   email: '',
-  signUp: () => new Promise((resolve, reject) => reject(0)),
-  confirmSignUp: () => new Promise((resolve, reject) => reject(0)),
-  signIn: () => new Promise((resolve, reject) => reject(0))
+  signUp: () => new Promise(reject => reject(0)),
+  confirmSignUp: () => new Promise(reject => reject(0)),
+  signIn: () => new Promise(reject => reject(0))
 })
 
 export interface AuthContextProviderProps {
